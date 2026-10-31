@@ -4,7 +4,7 @@ import {readFile} from 'node:fs/promises';
 import {validate,visibleItems,validURL} from '../model.js';
 import {migrate,richText,updateText} from '../enhancements.js';
 import {setupV3,showcased,nextWork,renderBlocks} from '../studio-v3.js';
-const source=JSON.parse(await readFile(new URL('../content.json',import.meta.url)));
+const source=JSON.parse(await readFile(new URL('./fixtures/sample-content.json',import.meta.url)));
 test('seed content validates and sorts newest first',()=>{assert.equal(validate(source),source);assert.equal(visibleItems(source)[0].id,'between-worlds')});
 test('drafts are excluded; category and tags combine',()=>{const d=structuredClone(source);d.items[0].status='draft';assert.equal(visibleItems(d).length,2);assert.equal(visibleItems(d,'research','Research').length,1);assert.equal(visibleItems(d,'research','Art').length,0)});
 test('untrusted imports reject duplicate IDs, executable media and broken grid',()=>{for(const mutate of [d=>d.items[1].id=d.items[0].id,d=>d.items[0].cover='javascript:alert(1)',d=>d.items[0].blocks[0].start=12]){const d=structuredClone(source);mutate(d);assert.throws(()=>validate(d))}});
@@ -16,3 +16,4 @@ test('editing before a styled selection shifts its offsets',()=>{const b={text:{
 test('font-family quotes cannot terminate inline style attributes',()=>{const html=richText({text:{en:'Text'},typography:{size:48,color:'#cc2244'}},'en');assert.match(html,/&quot;Noto Sans SC&quot;/);assert.match(html,/font-size:48px/);assert.match(html,/color:#cc2244/);assert.doesNotMatch(html,/Inter, "/)});
 test('containers, custom carousel and next work preserve ordering',()=>{const d=migrate(structuredClone(source));setupV3(d);assert.doesNotThrow(()=>validate(d));d.showcase={mode:'custom',ids:[d.items[2].id,d.items[0].id],seconds:4};assert.equal(showcased(d)[0].id,d.items[2].id);assert.match(nextWork(d,d.items[2],'en'),/between-worlds/);assert.match(renderBlocks(d.items[0],false,'en',0),/layout-grid/);});
 test('table and links validate and escape content',()=>{const d=migrate(structuredClone(source));setupV3(d);const base={span:1,start:1,row:1,container:'row-1',align:'left',text:{zh:'链接',en:'Link'}};d.items[0].blocks.push({...base,type:'link',href:'https://example.com'});d.items[0].blocks.push({...base,type:'table',cells:{zh:[['<script>']],en:[['Cell']]}});assert.doesNotThrow(()=>validate(d));assert.match(renderBlocks(d.items[0],false,'zh',0),/&lt;script&gt;/);d.items[0].blocks.at(-2).href='javascript:alert(1)';assert.throws(()=>validate(d));});
+

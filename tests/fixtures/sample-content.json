@@ -1,0 +1,289 @@
+{
+  "version": 1,
+  "items": [
+    {
+      "id": "between-worlds",
+      "category": "projects",
+      "title": {
+        "zh": "界限之间",
+        "en": "Between worlds"
+      },
+      "subtitle": {
+        "zh": "空间、规则与玩家的选择",
+        "en": "Space, rules, and player agency"
+      },
+      "updated": "2026-10-31",
+      "tags": [
+        "Game design",
+        "Programming"
+      ],
+      "cover": "./assets/world.svg",
+      "status": "published",
+      "demo": true,
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "zh": "从一个问题开始。",
+            "en": "Start with a question."
+          },
+          "span": 8,
+          "start": 1,
+          "align": "left",
+          "row": 1,
+          "typography": {
+            "font": "sans",
+            "size": 32,
+            "bold": true
+          },
+          "container": "row-1"
+        },
+        {
+          "type": "text",
+          "text": {
+            "zh": "这里是项目详情的排版示例，不代表真实作品。你可以在编辑器中替换为设计目标、玩法机制、程序架构与迭代过程。",
+            "en": "This is a layout sample, not a real project. Replace it with your design goals, mechanics, architecture, and iterations in the editor."
+          },
+          "span": 7,
+          "start": 5,
+          "align": "left",
+          "row": 2,
+          "typography": {
+            "font": "sans",
+            "size": 20,
+            "bold": false
+          },
+          "container": "row-2"
+        },
+        {
+          "type": "image",
+          "src": "./assets/world.svg",
+          "text": {
+            "zh": "空间构成 · 示意图",
+            "en": "Spatial composition · illustration"
+          },
+          "span": 12,
+          "start": 1,
+          "align": "left",
+          "row": 3,
+          "typography": {
+            "font": "sans",
+            "size": 20,
+            "bold": false
+          },
+          "container": "row-3"
+        }
+      ],
+      "layouts": {
+        "row-1": {
+          "type": "grid",
+          "columns": 12,
+          "gapX": 20,
+          "gapY": 24,
+          "padding": 0,
+          "direction": "row",
+          "align": "start"
+        },
+        "row-2": {
+          "type": "grid",
+          "columns": 12,
+          "gapX": 20,
+          "gapY": 24,
+          "padding": 0,
+          "direction": "row",
+          "align": "start"
+        },
+        "row-3": {
+          "type": "grid",
+          "columns": 12,
+          "gapX": 20,
+          "gapY": 24,
+          "padding": 0,
+          "direction": "row",
+          "align": "start"
+        }
+      }
+    },
+    {
+      "id": "motion-study",
+      "category": "experiments",
+      "title": {
+        "zh": "运动的语法",
+        "en": "A grammar of motion"
+      },
+      "subtitle": {
+        "zh": "一次关于节奏与反馈的练习",
+        "en": "An experiment in rhythm and feedback"
+      },
+      "updated": "2026-10-24",
+      "tags": [
+        "Interaction",
+        "Art"
+      ],
+      "cover": "./assets/motion.svg",
+      "status": "published",
+      "demo": true,
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "zh": "观察。尝试。再来一次。",
+            "en": "Observe. Try. Repeat."
+          },
+          "span": 10,
+          "start": 1,
+          "align": "left",
+          "row": 1,
+          "typography": {
+            "font": "sans",
+            "size": 32,
+            "bold": true
+          },
+          "container": "row-1"
+        },
+        {
+          "type": "text",
+          "text": {
+            "zh": "示例内容。这里可以记录小型原型的目标、制作过程和反思。",
+            "en": "Sample content. Document the goals, process, and reflections of a small prototype here."
+          },
+          "span": 7,
+          "start": 5,
+          "align": "left",
+          "row": 2,
+          "typography": {
+            "font": "sans",
+            "size": 20,
+            "bold": false
+          },
+          "container": "row-2"
+        }
+      ],
+      "layouts": {
+        "row-1": {
+          "type": "grid",
+          "columns": 12,
+          "gapX": 20,
+          "gapY": 24,
+          "padding": 0,
+          "direction": "row",
+          "align": "start"
+        },
+        "row-2": {
+          "type": "grid",
+          "columns": 12,
+          "gapX": 20,
+          "gapY": 24,
+          "padding": 0,
+          "direction": "row",
+          "align": "start"
+        }
+      }
+    },
+    {
+      "id": "play-and-perception",
+      "category": "research",
+      "title": {
+        "zh": "游戏与感知",
+        "en": "Play & perception"
+      },
+      "subtitle": {
+        "zh": "探索规则如何塑造体验",
+        "en": "Exploring how rules shape experience"
+      },
+      "updated": "2026-10-12",
+      "tags": [
+        "Research",
+        "Game design"
+      ],
+      "cover": "./assets/research.svg",
+      "status": "published",
+      "demo": true,
+      "blocks": [
+        {
+          "type": "text",
+          "text": {
+            "zh": "理解体验背后的结构。",
+            "en": "Understanding the structure of experience."
+          },
+          "span": 10,
+          "start": 1,
+          "align": "left",
+          "row": 1,
+          "typography": {
+            "font": "sans",
+            "size": 32,
+            "bold": true
+          },
+          "container": "row-1"
+        },
+        {
+          "type": "text",
+          "text": {
+            "zh": "示例内容。这里可以展示研究问题、方法、发现和参考资料。",
+            "en": "Sample content. Present research questions, methods, findings, and references here."
+          },
+          "span": 7,
+          "start": 5,
+          "align": "left",
+          "row": 2,
+          "typography": {
+            "font": "sans",
+            "size": 20,
+            "bold": false
+          },
+          "container": "row-2"
+        }
+      ],
+      "layouts": {
+        "row-1": {
+          "type": "grid",
+          "columns": 12,
+          "gapX": 20,
+          "gapY": 24,
+          "padding": 0,
+          "direction": "row",
+          "align": "start"
+        },
+        "row-2": {
+          "type": "grid",
+          "columns": 12,
+          "gapX": 20,
+          "gapY": 24,
+          "padding": 0,
+          "direction": "row",
+          "align": "start"
+        }
+      }
+    }
+  ],
+  "tagLabels": {
+    "Game design": {
+      "zh": "游戏设计",
+      "en": "Game design"
+    },
+    "Programming": {
+      "zh": "程序开发",
+      "en": "Programming"
+    },
+    "Interaction": {
+      "zh": "交互",
+      "en": "Interaction"
+    },
+    "Art": {
+      "zh": "美术",
+      "en": "Art"
+    },
+    "Research": {
+      "zh": "研究",
+      "en": "Research"
+    }
+  },
+  "appearance": {},
+  "fonts": [],
+  "showcase": {
+    "mode": "recent",
+    "ids": [],
+    "seconds": 5
+  }
+}
