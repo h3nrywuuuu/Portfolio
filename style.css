@@ -71,7 +71,14 @@
 .collection-intro h1{font-size:clamp(64px,10.5vw,158px);font-weight:800;line-height:1.02;text-transform:uppercase;letter-spacing:-.065em;margin:30px 0 25px}
 .site-main .section-label,.site-main .updates,.site-main .about-teaser,.site-main .filters,.site-main .update-row,.site-main .bio-row,.site-main .text-link,.site-main .profile-contacts a,.site-main .gallery-back a,.site-main .intro-bottom a,footer{border-top:0;border-bottom:0}
 .site-main hr{display:none}.header nav a[aria-current]:after{display:none}.header nav a[aria-current]{color:var(--red)}
-.update-row,.update-row:first-child{padding:24px 16px;transition:background-color .3s cubic-bezier(.16,1,.3,1),opacity 1.1s cubic-bezier(.16,1,.3,1),transform 1.1s cubic-bezier(.16,1,.3,1)}.update-row:hover,.update-row:focus-visible{background:var(--panel)}
+.update-row,.update-row:first-child,.update-row.reveal{position:relative;isolation:isolate;padding:24px 16px;transform-origin:center;transition:opacity 1.15s cubic-bezier(.16,1,.3,1),transform 1.25s cubic-bezier(.16,1,.3,1),scale .85s cubic-bezier(.16,1,.3,1),translate .85s cubic-bezier(.16,1,.3,1)}
+.update-row:before{content:'';position:absolute;inset:0;z-index:-1;pointer-events:none;background:var(--panel);opacity:0;transform:scale(.96);transition:opacity 1.15s cubic-bezier(.16,1,.3,1),transform 1.15s cubic-bezier(.16,1,.3,1)}
+.update-row:hover,.update-row:focus-visible{background:transparent}
+.update-row:focus-visible:before{opacity:1;transform:scale(1)}
+@media(hover:hover) and (pointer:fine){.update-row:hover:before{opacity:1;transform:scale(1)}}
+@media(prefers-reduced-motion:no-preference){.update-row:focus-visible{scale:1.035;translate:0 -4px}}
+@media(hover:hover) and (pointer:fine) and (prefers-reduced-motion:no-preference){.update-row:hover{scale:1.035;translate:0 -4px}}
+@media(prefers-reduced-motion:reduce){.update-row,.update-row:before{transition:none}.update-row:before{transform:none}}
 .portfolio-introduction{padding:76px 0 10px}.home-page .portfolio-introduction .portfolio-intro{position:static;max-width:1120px;color:var(--ink);font-size:clamp(21px,2.65vw,38px);line-height:1.6;text-shadow:none;pointer-events:auto}.portfolio-introduction+.updates{margin-top:65px}.site-page-preview .portfolio-introduction{padding:35px 0 0}.site-page-preview .portfolio-intro{margin:0}
 @media(prefers-reduced-motion:no-preference){
 .site-main{animation:page-enter 1.15s cubic-bezier(.16,1,.3,1) both}
@@ -128,6 +135,25 @@ body.detail-page{padding-top:0}.detail-page .site-main>.project-hero{height:100s
 @media(prefers-reduced-motion:reduce){.header:before,.nav-works>span{transition:none}}
 /* Vector arrows stay monochrome on iOS, Android, and desktop. */
 .ui-arrow{display:inline-block;width:1em;height:1em;vertical-align:-.12em;flex:none;pointer-events:none}.page-intro h1 .icon-accent{display:inline-block;white-space:nowrap;margin-left:.1em;line-height:1}.page-intro h1 .ui-arrow{width:.88em;height:.88em;vertical-align:-.045em}
+/* Equal side tracks keep navigation on the page centre, independent of logo width. */
+.header,.home-page .header,.studio .header{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr)}
+.header>.wordmark{justify-self:start;min-width:0}.header>nav{justify-self:center;width:auto;margin:0;order:0}.header>.controls{justify-self:end;margin:0}
+.gallery-back a .ui-arrow{color:var(--red)}
+.studio-sidebar-resizer{display:none}
+.studio .editable>.layout-container{position:relative;padding-top:max(30px,var(--padding));min-height:100px;scroll-margin-top:calc(var(--nav-height) + 30px);scroll-margin-bottom:100px}
+.studio-container-label{position:absolute;top:0;left:0;font-size:10px!important;line-height:1.4;padding:3px 7px!important;background:var(--panel);color:var(--muted);border:0!important;cursor:pointer;z-index:2}
+.editable>.studio-container-selected{outline:2px dashed var(--blue);outline-offset:3px;border-color:var(--blue)}
+.studio-container-selected>.studio-container-label{background:var(--blue);color:var(--bg)}
+.studio-container-empty{grid-column:1/-1;min-height:100px;display:flex;align-items:center;justify-content:center;padding:18px;color:var(--muted);font-size:12px}
+.studio-insert-target{width:100%;font-size:11px;color:var(--muted);text-align:center}
+.bilingual-block textarea{min-height:112px;max-height:260px}
+.type-panel #type-bold[aria-pressed=true]{color:var(--red);font-weight:800}
+@media(min-width:1001px){
+ .editor-shell{grid-template-columns:var(--studio-left-width,210px) minmax(0,1fr) var(--studio-right-width,260px)}
+ .editor-shell>.editor-left,.editor-shell>.editor-right{grid-column:auto;display:block;min-width:0}
+ .studio-sidebar-resizer{position:sticky;top:0;z-index:3;display:block;height:22px;margin-bottom:10px;text-align:center;background:var(--bg);color:var(--muted);cursor:ew-resize;touch-action:none;user-select:none;font-size:16px;line-height:22px}
+ .studio-sidebar-resizer:hover,.studio-sidebar-resizer:focus-visible{color:var(--red);background:var(--panel)}
+}
 /* Zoom stays inside a stable crop frame on both personal pages. */
 .profile-frame{position:relative;width:100%;aspect-ratio:1.08;overflow:hidden;background:var(--panel);isolation:isolate}.profile-frame>.profile-image{position:absolute;inset:0;width:100%;height:100%;aspect-ratio:auto;object-fit:cover;transform:scale(var(--portrait-scale,1));transform-origin:var(--portrait-position,50% 50%)}.about-layout>.profile-frame{position:sticky;top:calc(var(--nav-height) + 24px);align-self:start}.site-page-preview .profile-frame{position:relative;top:auto}.portrait-import-status{padding:10px 0;min-height:24px;overflow-wrap:anywhere}.portrait-import-status[data-state=error]{color:var(--red);font-weight:600}.portrait-import-status[data-state=success]{color:var(--ink)}
 @media(max-width:650px){.about-layout>.profile-frame{position:relative;top:auto;margin-bottom:32px}}

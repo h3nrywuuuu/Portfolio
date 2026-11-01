@@ -7,7 +7,7 @@ import {validate} from '../model.js';
 import { mkdir, copyFile, cp, rm, readFile, writeFile } from 'node:fs/promises';
 await rm('dist', {recursive:true, force:true});
 await mkdir('dist');if(process.env.PORTFOLIO_PYTHON)execFileSync(process.env.PORTFOLIO_PYTHON,['scripts/subset-fonts.py'],{stdio:'inherit'});
-for (const file of ['index.html','style.css','app.js','model.js','enhancements.js','studio-v3.js','studio-controls.js','design-system.js','editor-v4.js','studio-menu.js','image-tools.js','site-content.js','home-gallery.js','layout-model.js','site-studio.js','studio-editor.js','typography-editor.js','design-editor.js','studio-entry.js','media.js','icons.js','palette-model.js','image-view.js','image-import.js']) await copyFile(file, `dist/${file}`);
+for (const file of ['index.html','style.css','app.js','model.js','enhancements.js','studio-v3.js','studio-controls.js','design-system.js','editor-v4.js','studio-menu.js','image-tools.js','site-content.js','home-gallery.js','layout-model.js','site-studio.js','studio-editor.js','typography-editor.js','design-editor.js','studio-entry.js','media.js','icons.js','palette-model.js','image-view.js','image-import.js','studio-ui.js']) await copyFile(file, `dist/${file}`);
 await cp('assets','dist/assets',{recursive:true});
 const content=validate(JSON.parse(await readFile('content.json','utf8')));content.items=content.items.filter(i=>i.status==='published');const mediaReport=await prepareMedia(content,'dist');validate(content);await writeFile('dist/content.json',JSON.stringify(content));console.log('Externalized media:',mediaReport.embeddedFiles,'unique files');
 if(process.env.PORTFOLIO_PYTHON)execFileSync(process.env.PORTFOLIO_PYTHON,['scripts/optimize-images.py','dist'],{stdio:'inherit'});console.log('Built static portfolio in dist/');
@@ -16,7 +16,7 @@ if(process.env.PORTFOLIO_PYTHON)execFileSync(process.env.PORTFOLIO_PYTHON,['scri
 let publicApp=(await readFile('dist/app.js','utf8')).replace('const EDITOR_ENABLED = true;', 'const EDITOR_ENABLED = false;');const editorStart=publicApp.indexOf('function editor(){'),renderStart=publicApp.indexOf('function render(){');publicApp=publicApp.slice(0,editorStart)+publicApp.slice(renderStart);const bindingStart=publicApp.indexOf('function bindEditor(){'),routeStart=publicApp.indexOf("addEventListener('hashchange'");publicApp=publicApp.slice(0,bindingStart)+publicApp.slice(routeStart);await writeFile('dist/app.js',publicApp);
 
 await writeFile('dist/style.css',publicCSS(await readFile('style.css','utf8')));
-for(const file of ['editor-v4.js','studio-menu.js','image-tools.js','studio-controls.js','site-studio.js','studio-editor.js','typography-editor.js','design-editor.js','studio-entry.js','image-import.js'])await rm('dist/'+file);
+for(const file of ['editor-v4.js','studio-menu.js','image-tools.js','studio-controls.js','site-studio.js','studio-editor.js','typography-editor.js','design-editor.js','studio-entry.js','image-import.js','studio-ui.js'])await rm('dist/'+file);
 
 const publishedContent=JSON.parse(await readFile('dist/content.json','utf8'));const graph=await staticGraph('dist');let html=await readFile('dist/index.html','utf8');
 const preloads=[...graph.keys()].filter(file=>file!=='app.js').map(file=>'<link rel="modulepreload" href="./'+file.replaceAll('\\','/')+'">').join('');
