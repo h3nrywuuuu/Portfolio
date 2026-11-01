@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {gzipSync} from 'node:zlib';
 export async function staticGraph(root,entry='app.js'){
- const visited=new Map();async function visit(file){if(visited.has(file))return;const source=await readFile(path.join(root,file),'utf8');visited.set(file,source);const imports=[...source.matchAll(/(?:import|export)\s+(?:[^;'"\n]+?\s+from\s*)?['"](\.\/?[^'"]+)['"]/g)].map(m=>m[1]);for(const specifier of imports)await visit(path.normalize(path.join(path.dirname(file),specifier)));}await visit(entry);return visited;
+ const visited=new Map();async function visit(file){if(visited.has(file))return;const source=await readFile(path.join(root,file),'utf8');visited.set(file,source);const imports=[...source.matchAll(/(?:import|export)\s+(?:[^;'"\n]+?\s+from\s*)?['"](\.\/?[^'"]+)['"]/g)].map(m=>m[1]);for(const specifier of imports)await visit(path.normalize(path.join(path.dirname(file),specifier.split('?')[0])));}await visit(entry);return visited;
 }
 export async function performanceReport(root='dist'){
  const graph=await staticGraph(root),modules=[...graph].map(([file,source])=>({file,bytes:Buffer.byteLength(source),gzip:gzipSync(source).length}));

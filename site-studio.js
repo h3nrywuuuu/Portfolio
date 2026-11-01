@@ -1,3 +1,4 @@
+import {arrowIcon} from './icons.js';
 import {importPortrait} from './image-import.js';
 import {fonts} from './enhancements.js';
 import {ensureSiteContent,addBilingualTag,deleteTag,safeContact,applySiteFonts,portraitPosition,updateHomeContent} from './site-content.js';
@@ -5,7 +6,7 @@ const pair=(zh='',en='')=>({zh,en});
 export function bindSiteStudio(ctx,view,setView,previewHTML){const {data,item,lang,tr,snapshot,render,validURL}=ctx,$=s=>document.querySelector(s);ensureSiteContent(data);
  const tabs=document.createElement('div');tabs.className='studio-page-tabs';tabs.setAttribute('role','group');tabs.setAttribute('aria-label','Edit website pages');for(const [key,label] of [['content',tr('作品内容','Work content')],['home',tr('主页','Home')],['about','About']]){const button=document.createElement('button');button.textContent=label;button.classList.toggle('active',view===key);button.onclick=()=>{setView(key);render()};tabs.append(button);}$('.editor-bar').before(tabs);
  if(view==='content'){bindTags(ctx);return;}
- $('.insert-dock')?.remove();$('.editor-left').innerHTML=`<h3>${view==='about'?'About':tr('主页','Home')}</h3><p class="hint">${tr('在右侧修改，中央实时预览。中英文分别填写，图片与链接共用。保存草稿或同步到本地网站可保留修改。','Edit on the right with a live preview. Text has separate language versions. Save draft or sync to keep changes.')}</p><a class="text-link" href="#/${view==='home'?'':view}">${tr('打开完整页面','Open full page')} ↗</a>`;
+ $('.insert-dock')?.remove();$('.editor-left').innerHTML=`<h3>${view==='about'?'About':tr('主页','Home')}</h3><p class="hint">${tr('在右侧修改，中央实时预览。中英文分别填写，图片与链接共用。保存草稿或同步到本地网站可保留修改。','Edit on the right with a live preview. Text has separate language versions. Save draft or sync to keep changes.')}</p><a class="text-link" href="#/${view==='home'?'':view}">${tr('打开完整页面','Open full page')} ${arrowIcon()}</a>`;
  const middle=$('.editor-middle'),right=$('.editor-right');middle.innerHTML='<div class="site-page-preview"></div>';right.innerHTML='';const preview=()=>{middle.querySelector('.site-page-preview').innerHTML=previewHTML(view);if(view==='home'){updateHomeContent(middle,data,lang);const showcase=middle.querySelector('.showcase');if(showcase){showcase.classList.add('preview-showcase');[...showcase.children].forEach((el,n)=>el.hidden=n>0);}}applySiteFonts(middle,data,lang);};preview();
  document.onkeydown=e=>{if(!location.hash.endsWith('/studio'))return;if((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='z'){e.preventDefault();$('#'+(e.shiftKey?'redo':'undo'))?.click();}else if(e.key==='Backspace'&&!e.target.closest('input,textarea,[contenteditable]'))e.preventDefault();};
  const section=title=>{const h=document.createElement('h3');h.textContent=title;right.append(h);};

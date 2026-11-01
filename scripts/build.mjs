@@ -1,4 +1,5 @@
 import {staticGraph} from './performance-report.mjs';
+import {versionAssets} from './version-assets.mjs';
 import {publicCSS} from './public-css.mjs';
 import {execFileSync} from 'node:child_process';
 import {prepareMedia} from './media-build.mjs';
@@ -22,3 +23,4 @@ const preloads=[...graph.keys()].filter(file=>file!=='app.js').map(file=>'<link 
 const recent=[...content.items].sort((a,b)=>b.updated.localeCompare(a.updated));const first=content.showcase?.mode==='custom'?content.items.find(i=>i.id===content.showcase.ids[0]):recent[0];const covers={home:first?{src:first.cover,srcset:publishedContent.media?.[first.cover]?.srcset}:null,items:Object.fromEntries(content.items.map(i=>[i.id,{src:i.cover,srcset:publishedContent.media?.[i.cover]?.srcset}]))};const payload=JSON.stringify(covers).replaceAll('<','\\u003c');
 const heroPreload='<script>(()=>{const covers='+payload+';const hash=location.hash;const image=hash.startsWith("#/work/")?covers.items[hash.split("/")[2]]:(!hash||hash==="#/"?covers.home:null);if(!image)return;const link=document.createElement("link");link.rel="preload";link.as="image";link.fetchPriority="high";if(image.srcset?.length){link.imageSrcset=image.srcset.map(v=>v.src+" "+v.width+"w").join(", ");link.imageSizes="100vw";}link.href=image.src;document.head.append(link)})();</script>';
 html=html.replace('<script type="module"',preloads+heroPreload+'<script type="module"');await writeFile('dist/index.html',html);
+console.log('Asset version:',await versionAssets('dist'));
