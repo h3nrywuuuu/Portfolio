@@ -2,3 +2,5 @@ dist/
 node_modules/
 .portfolio-workspace*.json
 .portfolio-workspace*.tmp
+
+.performance/

@@ -1,0 +1,2 @@
+export function colorToken(color){return ['text','muted','primary','secondary'].includes(color)?color:['#d7452d','#ff7258'].includes(color?.toLowerCase())?'primary':['#2549db','#8aa6ff'].includes(color?.toLowerCase())?'secondary':'text';}
+export function normalizePalette(data){for(const item of data.items)for(const block of item.blocks){if(block.typography)block.typography.color=colorToken(block.typography.color);for(const runs of Object.values(block.runs||{}))for(const run of runs)if(run.style.color)run.style.color=colorToken(run.style.color);}return data;}

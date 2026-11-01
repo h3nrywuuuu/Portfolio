@@ -1,5 +1,5 @@
-export function colorToken(color){return ['text','muted','primary','secondary'].includes(color)?color:['#d7452d','#ff7258'].includes(color?.toLowerCase())?'primary':['#2549db','#8aa6ff'].includes(color?.toLowerCase())?'secondary':'text';}
-export function normalizePalette(data){for(const item of data.items)for(const block of item.blocks){if(block.typography)block.typography.color=colorToken(block.typography.color);for(const runs of Object.values(block.runs||{}))for(const run of runs)if(run.style.color)run.style.color=colorToken(run.style.color);}return data;}
+import {colorToken} from './palette-model.js';
+export {colorToken,normalizePalette} from './palette-model.js';
 export function paletteControls(tr,b,lang){for(const [id,value] of [['type-color',b?.typography?.color],['inline-color','primary']]){const old=document.getElementById(id);if(!old)continue;const select=document.createElement('select');select.id=id;select.setAttribute('aria-label',id==='type-color'?tr('段落颜色','Paragraph color'):tr('选中文字颜色','Selection color'));for(const [token,label] of [['text',tr('黑／白 · 跟随模式','Black / white · adaptive')],['primary',tr('主题色一','Primary accent')],['secondary',tr('主题色二','Secondary accent')]]){const option=document.createElement('option');option.value=token;option.textContent=label;select.append(option);}select.value=colorToken(value);old.replaceWith(select);}}
 export function editorInteractions({item,selected,setSelected,snapshot,render,tr}){
  document.getElementById('studio-context-menu')?.remove();

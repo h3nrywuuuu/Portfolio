@@ -2,7 +2,7 @@ export const categories=['projects','experiments','research'];
 export function validURL(value){return typeof value==='string' && (/^https?:\/\//i.test(value)||/^\.\/assets\/[\w./-]+$/.test(value)||/^data:image\/(png|jpeg|webp|gif);base64,[a-z0-9+/=]+$/i.test(value));}
 export function validate(data){
  if(!data||data.version!==1||!Array.isArray(data.items)||data.items.length>200)throw Error('Invalid portfolio format');
- if(data.fonts&&(!Array.isArray(data.fonts)||data.fonts.some(f=>!/^font-\d+$/.test(f.id)||typeof f.name!=='string'||!/^data:application\/octet-stream;base64,[A-Za-z0-9+/=]+$/.test(f.src)||f.src.length>7500000)))throw Error('Invalid uploaded font');
+ if(data.fonts&&(!Array.isArray(data.fonts)||data.fonts.some(f=>!/^font-\d+$/.test(f.id)||typeof f.name!=='string'||!(/^data:application\/octet-stream;base64,[A-Za-z0-9+/=]+$/.test(f.src)||/^\.\/assets\/generated\/[a-f0-9]+\.(woff2?|ttf|otf)$/.test(f.src))||f.src.length>7500000)))throw Error('Invalid uploaded font');
  const fontNames=['sans','serif','mono','system',...(data.fonts||[]).map(f=>f.id)];
  if(data.site?.about?.featuredIds&&(!Array.isArray(data.site.about.featuredIds)||!data.site.about.featuredIds.every(id=>typeof id==='string')))throw Error('Invalid About featured work');
  if(data.site?.brand!==undefined&&(typeof data.site.brand!=='string'||data.site.brand.length>80))throw Error('Invalid site wordmark');
