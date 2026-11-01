@@ -1,0 +1,3 @@
+import {mkdir,writeFile} from 'node:fs/promises';
+import {createHash} from 'node:crypto';
+export async function uploadVideo(req,root){let size=0,chunks=[];for await(const chunk of req){size+=chunk.length;if(size>80*1024*1024)throw Error('Video exceeds 80 MB');chunks.push(chunk);}const bytes=Buffer.concat(chunks);let ext;if(bytes.length>=12&&bytes.toString('ascii',4,8)==='ftyp')ext='mp4';else if(bytes.length>=4&&bytes.subarray(0,4).equals(Buffer.from([0x1a,0x45,0xdf,0xa3])))ext='webm';else throw Error('Unsupported video: use MP4 or WebM');const id=createHash('sha256').update(bytes).digest('hex').slice(0,24);await mkdir(root+'/assets/uploads',{recursive:true});await writeFile(root+'/assets/uploads/'+id+'.'+ext,bytes);return './assets/uploads/'+id+'.'+ext;}
