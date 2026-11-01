@@ -63,4 +63,6 @@ node scripts/audit-server.mjs dist 4177
 
 普通 `npm run build` 仍可使用已准备好的字体和原图完成离线构建；配置 Python 后才会重新裁剪字体并生成 WebP。不要将 `.performance/` 中的缓存、旧构建或诊断数据上传。
 
+发布构建支持 JPG、PNG 和静态 WebP，生成 480/800/1200/1600/2400px 候选尺寸，不放大小图；到达原图尺寸时直接复用原图，避免重复有损压缩。保留透明通道，跳过动画图片。个人图片的缩放比例会传入浏览器的选图尺寸提示，以免裁切放大后仍加载过小的版本。运行 `python tests/image-optimization.py` 可验证此流程，GitHub Actions 同样执行该检查。
+
 实现依据：[fontTools 官方子集化文档](https://fonttools.readthedocs.io/en/stable/subset/)。
