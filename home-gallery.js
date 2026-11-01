@@ -1,3 +1,4 @@
+import {arrowIcon} from './icons.js';
 import {imageAttrs} from './media.js';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
@@ -7,7 +8,7 @@ export function renderGallery(data,lang){
  const t=value=>esc(value[lang]||value.zh);
  // Equal groups make the loop seamless; repeat small collections to fill wide screens.
  const count=Math.max(items.length,Math.ceil(6/items.length)*items.length);
- const group=duplicate=>`<div class="gallery-group" ${duplicate?'aria-hidden="true"':''}>${Array.from({length:count},(_,n)=>{const i=items[n%items.length],copy=duplicate||n>=items.length;return `<article class="gallery-card" tabindex="${copy?-1:0}" ${copy?'aria-hidden="true"':''} aria-label="${t(i.title)}"><div class="gallery-flipper"><div class="gallery-front"><img src="${esc(i.cover)}" alt="${t(i.title)}" ${imageAttrs(i.cover)}></div><div class="gallery-back" aria-hidden="true"><h2>${t(i.title)}</h2><p>${t(i.subtitle)}</p><a tabindex="-1" href="#/work/${encodeURIComponent(i.id)}">${lang==='zh'?'查看作品':'View work'} ↗</a></div></div></article>`}).join('')}</div>`;
+ const group=duplicate=>`<div class="gallery-group" ${duplicate?'aria-hidden="true"':''}>${Array.from({length:count},(_,n)=>{const i=items[n%items.length],copy=duplicate||n>=items.length;return `<article class="gallery-card" tabindex="${copy?-1:0}" ${copy?'aria-hidden="true"':''} aria-label="${t(i.title)}"><div class="gallery-flipper"><div class="gallery-front"><img src="${esc(i.cover)}" alt="${t(i.title)}" ${imageAttrs(i.cover)}></div><div class="gallery-back" aria-hidden="true"><h2>${t(i.title)}</h2><p>${t(i.subtitle)}</p><a tabindex="-1" href="#/work/${encodeURIComponent(i.id)}">${lang==='zh'?'查看作品':'View work'} ${arrowIcon()}</a></div></div></article>`}).join('')}</div>`;
  return `<section class="work-gallery" aria-label="${lang==='zh'?'作品画廊':'Work gallery'}"><div class="gallery-viewport"><div class="gallery-track">${group(false)}${group(true)}</div></div></section>`;
 }
 

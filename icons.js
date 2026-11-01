@@ -1,0 +1,2 @@
+// Single filled outline: no overlapping strokes, joins, or platform emoji glyphs.
+export function arrowIcon(){return '<svg class="ui-arrow" viewBox="8 20 110 110" width="1em" height="1em" fill="currentColor" stroke="none" shape-rendering="geometricPrecision" aria-hidden="true" focusable="false"><path d="M15 111 81 46C72 47 64 47 57 45L61 31C77 33 94 31 109 28C106 44 105 61 107 76L93 80C91 72 91 64 92 55L26 122Z"/></svg>'}
