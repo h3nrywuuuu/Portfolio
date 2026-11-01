@@ -12,7 +12,7 @@
         "zh": "一次动态图形设计尝试",
         "en": "One Motion graphic design Attempt"
       },
-      "updated": "2026-10-31",
+      "updated": "2023-10-31",
       "tags": [
         "tag-1793565357410-7wj2"
       ],
@@ -270,7 +270,7 @@
             "y": 50
           },
           "showCaption": false,
-          "bleed": true
+          "bleed": false
         },
         {
           "type": "image",
@@ -297,7 +297,7 @@
             "y": 50
           },
           "showCaption": false,
-          "bleed": true
+          "bleed": false
         }
       ],
       "layouts": {
@@ -481,19 +481,6 @@
           "direction": "row",
           "align": "start"
         },
-        "layout-1793569633496": {
-          "name": "Container 16",
-          "type": "grid",
-          "columns": 1,
-          "rows": 2,
-          "gridVersion": 1,
-          "gapX": 20,
-          "gapY": 20,
-          "padding": 0,
-          "direction": "row",
-          "align": "start",
-          "editorCreated": true
-        },
         "bleed-1793569749370": {
           "type": "grid",
           "columns": 1,
@@ -526,7 +513,6 @@
         "layout-1793568175391",
         "layout-1793567577854",
         "layout-1793568455062",
-        "layout-1793569633496",
         "bleed-1793569749370",
         "bleed-1793569751301"
       ]
