@@ -548,10 +548,10 @@
   },
   "appearance": {
     "dark": {
-      "secondary": "#8affbd"
+      "secondary": "#ffc88a"
     },
     "light": {
-      "secondary": "#24db86"
+      "secondary": "#db8624"
     }
   },
   "fonts": [],

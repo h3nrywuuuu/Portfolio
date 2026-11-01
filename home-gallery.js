@@ -27,9 +27,10 @@ export function bindGallery(){
  }
 }
 
-let listening=false;
+let listening=false,navAbort;
 export function bindNavigation(){
  const update=()=>document.body.classList.toggle('nav-scrolled',window.scrollY>24);
  if(!listening){window.addEventListener('scroll',update,{passive:true});listening=true}
  update();
+ navAbort?.abort();navAbort=new AbortController();const options={signal:navAbort.signal},wrap=document.querySelector('.works-dropdown'),button=document.querySelector('#works-toggle'),submenu=document.querySelector('#works-submenu');if(!wrap||!button||!submenu)return;const open=value=>{submenu.hidden=!value;button.setAttribute('aria-expanded',String(value));};wrap.addEventListener('pointerenter',e=>{if(e.pointerType!=='touch')open(true)},options);wrap.addEventListener('pointerleave',e=>{if(e.pointerType!=='touch'&&!wrap.contains(document.activeElement))open(false)},options);wrap.addEventListener('focusout',e=>{if(!wrap.contains(e.relatedTarget))open(false)},options);button.addEventListener('click',()=>open(submenu.hidden),options);wrap.addEventListener('keydown',e=>{if(e.key==='Escape'){open(false);button.focus()}if(e.target===button&&e.key==='ArrowDown'){e.preventDefault();open(true);submenu.querySelector('a').focus()}},options);document.addEventListener('pointerdown',e=>{if(!wrap.contains(e.target))open(false)},options);
 }
