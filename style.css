@@ -23,3 +23,4 @@
 @media(max-width:650px){.site-main .layout-container{display:flex;flex-direction:column}.site-main .layout-container>.block{width:100%}.carousel .card-image{aspect-ratio:1.5!important}.next-work{padding:60px 15px}.next-work h2{font-size:24px}.sync-controls{padding-top:10px}.blocks-v3{padding:25px 0}}
 @media(prefers-reduced-motion:reduce){.carousel>.card{animation:none}.next-work:hover img{transform:none}}
 .layout-stack>.block{flex-grow:var(--cell-span);flex-basis:0}.layout-stack[style*="--direction:column"]>.block{flex:auto}.carousel-controls button{min-width:40px}.carousel-controls button[data-pause]{font-size:16px}
+#studio-context-menu{position:fixed;z-index:100;width:210px;background:var(--bg);color:var(--ink);border:1px solid var(--line);box-shadow:0 12px 35px #0003;padding:6px}#studio-context-menu button{display:block;text-align:left;width:100%;border:0;padding:12px}#studio-context-menu button:hover,#studio-context-menu button:focus{background:var(--panel)}
