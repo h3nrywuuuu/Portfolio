@@ -6,7 +6,7 @@
 
 需要 Node.js 20+，无第三方 npm 依赖。
 
-Windows：双击仓库根目录的 `启动工作台.cmd`，会自动启动本机服务并用默认浏览器打开工作台。服务已启动时直接打开页面，不会重复启动。启动日志在忽略提交的 `.performance/studio-server*.log` 中。
+Windows：双击仓库根目录的 `启动工作台.cmd`，会自动启动本机服务并用默认浏览器打开工作台。服务已启动时直接打开页面，不会重复启动。若默认的 4173 端口被占用或 Windows 拒绝绑定，会自动尝试 4174–4183，并记住成功的端口；启动诊断位于 `.performance/studio-launch.log`。启动日志在忽略提交的 `.performance/studio-server*.log` 中。
 
 ```sh
 npm run dev
