@@ -681,7 +681,7 @@
         "en": "Reading: M.D.A."
       },
       "subtitle": {
-        "zh": "一个游戏设计与研究的正式方法",
+        "zh": "一个游戏设计与研究的形式化方法",
         "en": "A Formal Approach to Game Design and Game Research "
       },
       "updated": "2026-10-12",
@@ -718,7 +718,7 @@
         {
           "type": "text",
           "text": {
-            "zh": "这篇文章是由 Robin Hunicke、Marc LeBlanc、和 Robert Zubek 在 2004 年发表的。MDA 的概念最早出现在 GDC 活动的Game Design and Tuning 工作坊。作者们希望为游戏设计、开发和研究者创造一个通用的“语言”",
+            "zh": "这篇文章是由 Robin Hunicke、Marc LeBlanc、和 Robert Zubek 在 2004 年发表的。MDA 的概念最早出现在 GDC 活动的Game Design and Tuning 工作坊。作者们希望为游戏设计、开发和研究者创造一个通用的“语言”。",
             "en": "This 2004 paper was written by Robin Hunicke, Marc LeBlanc, and Robert Zubek. MDA emerged from Game Design and Tuning Workshops at GDC. The authors wanted a common language for designers, developers, and researchers. "
           },
           "span": 1,
@@ -841,8 +841,8 @@
           "row": 1,
           "align": "left",
           "text": {
-            "zh": "规则 ≠ 行为：",
-            "en": "Rules ≠ behavior："
+            "zh": "规则 ≠ 行为",
+            "en": "Rules ≠ behavior"
           },
           "typography": {
             "font": "sans",
