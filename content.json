@@ -832,6 +832,92 @@
               }
             ]
           }
+        },
+        {
+          "type": "text",
+          "container": "layout-1793956476003",
+          "span": 1,
+          "start": 1,
+          "row": 1,
+          "align": "left",
+          "text": {
+            "zh": "规则 ≠ 行为：",
+            "en": "Rules ≠ behavior："
+          },
+          "typography": {
+            "font": "sans",
+            "size": 20,
+            "color": "primary",
+            "bold": true
+          },
+          "runs": {
+            "en": [],
+            "zh": []
+          }
+        },
+        {
+          "type": "text",
+          "container": "layout-1793956476003",
+          "span": 1,
+          "start": 1,
+          "row": 1,
+          "align": "left",
+          "text": {
+            "zh": "在射击游戏中，武器、弹药与出生点属于机制（Mechanics）；这些规则可能催生蹲点防守、远距离狙击等动态行为（Dynamics），进而让玩家感受到挑战的乐趣，或遭遇挫败与沮丧。这也揭示了设计者与玩家看待同一款游戏时的视角差异：设计者从规则出发构建体验，而玩家则从体验出发感知规则。",
+            "en": "In shooters, weapons, ammunition, and spawn points are Mechanics. They can lead to camping or sniping—Dynamics—which may feel challenging or frustrating. This also reveals why designers and players view the same game differently.\n"
+          },
+          "typography": {
+            "font": "sans",
+            "size": 20,
+            "color": "text"
+          },
+          "runs": {
+            "en": [],
+            "zh": []
+          }
+        },
+        {
+          "type": "text",
+          "container": "layout-1793956688439",
+          "span": 1,
+          "start": 1,
+          "row": 1,
+          "align": "left",
+          "text": {
+            "zh": "相同的游戏，不同的视角",
+            "en": "Same game. Opposite views.\n"
+          },
+          "typography": {
+            "font": "sans",
+            "size": 20,
+            "color": "primary",
+            "bold": true
+          },
+          "runs": {
+            "en": [],
+            "zh": []
+          }
+        },
+        {
+          "type": "text",
+          "container": "layout-1793956688439",
+          "span": 1,
+          "start": 1,
+          "row": 1,
+          "align": "left",
+          "text": {
+            "zh": "设计者从规则出发，试图塑造预期的游戏体验；玩家则从自身感受出发，在交互中察觉行为模式，并逐渐理解背后的规则。二者的视角截然不同。然而，如果体验才是设计的最终目标，我们又该如何准确地描述与定义它？",
+            "en": "Designers start with rules and aim for an experience. Players begin with what they feel, notice patterns, and gradually discover the rules. These are different perspectives. but if experience is our goal, how can we describe it precisely?\n"
+          },
+          "typography": {
+            "font": "sans",
+            "size": 20,
+            "color": "text"
+          },
+          "runs": {
+            "en": [],
+            "zh": []
+          }
         }
       ],
       "layouts": {
@@ -884,13 +970,41 @@
           "direction": "row",
           "align": "start",
           "editorCreated": true
+        },
+        "layout-1793956476003": {
+          "name": "Container 5",
+          "type": "grid",
+          "columns": 1,
+          "rows": 2,
+          "gridVersion": 1,
+          "gapX": 20,
+          "gapY": 20,
+          "padding": 0,
+          "direction": "row",
+          "align": "start",
+          "editorCreated": true
+        },
+        "layout-1793956688439": {
+          "name": "Container 6",
+          "type": "grid",
+          "columns": 1,
+          "rows": 2,
+          "gridVersion": 1,
+          "gapX": 20,
+          "gapY": 20,
+          "padding": 0,
+          "direction": "row",
+          "align": "start",
+          "editorCreated": true
         }
       },
       "layoutOrder": [
         "row-1",
         "row-2",
         "layout-1793955426820",
-        "layout-1793955498141"
+        "layout-1793955498141",
+        "layout-1793956476003",
+        "layout-1793956688439"
       ],
       "headingFont": "sans"
     }
