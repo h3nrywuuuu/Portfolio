@@ -1,9 +1,11 @@
+import {createHash} from 'node:crypto';
 import {spawn} from 'node:child_process';
 import {mkdir, open, readFile, writeFile} from 'node:fs/promises';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 const root = fileURLToPath(new URL('../', import.meta.url)).replace(/\/$/, '');
+const serverRevision = createHash('sha256').update(await readFile(new URL('./server-v3.mjs', import.meta.url))).digest('hex');
 const diagnostics = path.join(root, '.performance');
 await mkdir(diagnostics, {recursive: true});
 const portFile = path.join(diagnostics, 'studio-port');
@@ -18,7 +20,7 @@ async function status(port) {
       signal: AbortSignal.timeout(500),
     });
     const data = await response.json();
-    return data.app === 'H3nRy_Studio' && data.root === root;
+    return data.app === 'H3nRy_Studio' && data.root === root && data.serverRevision === serverRevision;
   } catch { return false; }
 }
 

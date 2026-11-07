@@ -1,13 +1,14 @@
 param([switch]$NoBrowser)
 $ErrorActionPreference = 'Stop'
 $projectRoot = Split-Path -Parent $PSScriptRoot
+$serverRevision = (Get-FileHash -LiteralPath (Join-Path $PSScriptRoot 'server-v3.mjs') -Algorithm SHA256).Hash.ToLowerInvariant()
 $logs = Join-Path $projectRoot '.performance'
 $portFile = Join-Path $logs 'studio-port.json'
 
 function Test-Studio([int]$Port) {
     try {
         $status = Invoke-RestMethod "http://127.0.0.1:$Port/api/status" -TimeoutSec 2
-        return $status.app -eq 'H3nRy_Studio' -and $status.root -eq $projectRoot
+        return $status.app -eq 'H3nRy_Studio' -and $status.root -eq $projectRoot -and $status.serverRevision -eq $serverRevision
     } catch { return $false }
 }
 function Test-PortOccupied([int]$Port) {
